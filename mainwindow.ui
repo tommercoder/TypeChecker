@@ -24,7 +24,8 @@
     <normaloff>C:/Users/tomas/Desktop/аниме/photo_2021-07-18_09-10-40.jpg</normaloff>C:/Users/tomas/Desktop/аниме/photo_2021-07-18_09-10-40.jpg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:#BFD5DB;</string>
+   <string notr="true">background-color:#BFD5DB;
+color:rgb(0,0,0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -130,6 +131,9 @@
       </property>
       <item>
        <widget class="QPushButton" name="pushButton_START">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="maximumSize">
          <size>
           <width>100</width>
@@ -187,11 +191,23 @@ QPushButton:focus:pressed{ background-color:#70DBE6; }
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionOpen_File"/>
+   </widget>
+   <addaction name="menuMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionless_mistakes_record">
    <property name="text">
     <string>less mistakes record</string>
+   </property>
+  </action>
+  <action name="actionOpen_File">
+   <property name="text">
+    <string>Open File</string>
    </property>
   </action>
  </widget>

@@ -11,6 +11,7 @@
 #include <QElapsedTimer>
 #include <QKeyEvent>
 #include <QSettings>
+#include <QFileDialog>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -38,6 +39,8 @@ private slots:
 
 
 
+
+    void on_actionOpen_File_triggered();
 
 private:
     Ui::MainWindow *ui;

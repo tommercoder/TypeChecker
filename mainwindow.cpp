@@ -17,10 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     timerUpdate = new QTimer(this);
     connect(timerUpdate,SIGNAL(timeout()),this,SLOT(updateTime()));
     timerUpdate->setInterval(100);
-    getTextFromFile();
 
-    currentSentence = textFromFile.split('.');
-    getSettingsFromFile();
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +36,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::getTextFromFile()
 {
-    QString filename=":/new/prefix1/typingFile.txt";
+
+    //QString filename=":/new/prefix1/typingFile.txt";
+    QString filename= QFileDialog::getOpenFileName(this,"Open a file");
     QFile file(filename);
     if(!file.exists())
     {
@@ -57,7 +56,10 @@ void MainWindow::getTextFromFile()
             textFromFile += in.readLine();
         }
         qDebug() << textFromFile;
+        ui->pushButton_START->setEnabled(true);
     }
+    currentSentence = textFromFile.split('.');
+    getSettingsFromFile();
 }
 void MainWindow::displaySentencesOneByOne()
 {
@@ -108,6 +110,7 @@ void MainWindow::on_pushButton_STOP_clicked()
 }
 void MainWindow::on_pushButton_START_clicked()
 {
+
     number = 0;
     displaySentencesOneByOne();
     mistakesCount = 0;
@@ -115,6 +118,7 @@ void MainWindow::on_pushButton_START_clicked()
     timerUpdate->start();
     running = true;
     ui->lineEdit_typing->setEnabled(true);
+
 }
 
 void MainWindow::updateTime()
@@ -201,3 +205,11 @@ void MainWindow::on_lineEdit_typing_textChanged(const QString &arg1)
 
 //    }
 //}
+
+void MainWindow::on_actionOpen_File_triggered()
+{
+    getTextFromFile();
+
+
+}
+
